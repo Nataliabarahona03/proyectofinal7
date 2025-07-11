@@ -9,65 +9,65 @@ const Header = () => {
 
   useEffect(() => {
     verifyingUser();
-  }, []);
+  }, [verifyingUser]); // Añadido verifyingUser al array de dependencias
+
   return (
-    <header className="bg-green-600">
-      <nav className="flex justify-between mx-8 py-4">
-        <ul className="flex items-center">
-          <li className="hidden ml-10 text-neutral-50 md:block">
-            <Link to="/guitarras" className="font-medium">
-              Menú
-            </Link>
-          </li>
-        </ul>
-        <section className="flex items-center justify-end">
-          {authStatus ? (
-            <>
-              <Link to="/perfil" className="btn-nav">
-                Perfil
-              </Link>
+    <header className="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <nav className="flex justify-between items-center py-4">
+          {/* Logo de la tienda */}
+          <Link to="/" className="text-2xl font-bold text-gray-900">
+            UrbanTees
+          </Link>
 
-              <Link to="/" className="btn-nav" onClick={() => logoutUser(navigate)}>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
-                  />
-                </svg>
+          {/* Menú Principal */}
+          <ul className="flex items-center space-x-8">
+            <li>
+              <Link to="/poleras" className="font-semibold text-gray-600 hover:text-indigo-600 transition-colors">
+                Colección
               </Link>
+            </li>
+            {/* Puedes añadir más enlaces aquí, ej: "Novedades", "Ofertas" */}
+          </ul>
 
-              {/* <Link to="/carrito" className="btn-cart">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
-                </svg>
-                <span className="btn-cart-quantity">{total}</span>
-              </Link> */}
-            </>
-          ) : (
-            <>
-              <Link to="/registro" className="btn-nav">
-                Crear cuenta
-              </Link>
-              <Link to="/iniciar-sesion" className="btn-nav">
-                Iniciar sesión
-              </Link>
-            </>
-          )}
-        </section>
-      </nav>
+          {/* Autenticación y Perfil */}
+          <section className="flex items-center justify-end">
+            {authStatus ? (
+              <>
+                <Link to="/perfil" className="btn-nav">
+                  Perfil
+                </Link>
+
+                <button onClick={() => logoutUser(navigate)} className="btn-logout" title="Cerrar Sesión">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                    />
+                  </svg>
+                </button>
+              </>
+            ) : (
+              <>
+                <Link to="/iniciar-sesion" className="btn-nav">
+                  Iniciar Sesión
+                </Link>
+                <Link to="/registro" className="ml-4 inline-block px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-700">
+                  Crear Cuenta
+                </Link>
+              </>
+            )}
+          </section>
+        </nav>
+      </div>
     </header>
   );
 };

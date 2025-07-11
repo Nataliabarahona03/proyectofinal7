@@ -1,23 +1,40 @@
 @import "tailwindcss";
 
+@layer base {
+  /* Opcional: Definir una fuente base más moderna si lo deseas */
+  /* body {
+    font-family: 'Inter', sans-serif;
+  } */
+}
+
 @layer components {
-    .btn-product {
-        @apply px-8 py-4 text-center font-medium text-white bg-black w-full;
-    }
+  /* Botón principal para llamados a la acción (ej. Ver poleras) */
+  .btn-primary {
+    @apply inline-block px-8 py-3 text-center font-bold text-white bg-gray-900 hover:bg-gray-700 transition-colors duration-300;
+  }
 
-    .btn-nav {
-        @apply bg-black px-4 py-2 font-medium text-white ml-4 lg:px-4;
-    }
+  /* Botones de navegación en el header */
+  .btn-nav {
+    @apply bg-transparent px-4 py-2 font-medium text-gray-800 hover:text-indigo-600 transition-colors duration-300;
+  }
 
-    .form-label {
-        @apply block text-sm;
-    }
+  /* Botón para cerrar sesión (icono) */
+  .btn-logout {
+    @apply ml-4 text-gray-600 hover:text-red-500 transition-colors duration-300;
+  }
 
-    .form-input {
-        @apply block w-full mt-1 px-4 py-2 border font-light focus:outline-none focus:border-gray-500 sm:text-sm;
-    }
+  /* Etiquetas de formulario */
+  .form-label {
+    @apply block text-sm font-medium text-gray-700;
+  }
 
-    .form-button {
-        @apply w-full flex justify-center py-2 px-4 text-sm font-medium text-white bg-black;
-    }
+  /* Campos de entrada del formulario */
+  .form-input {
+    @apply block w-full mt-1 px-4 py-2 border border-gray-300 rounded-md shadow-sm font-light focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm;
+  }
+
+  /* Botón de envío del formulario */
+  .form-button {
+    @apply w-full flex justify-center py-3 px-4 text-sm font-semibold text-white bg-gray-900 rounded-md shadow-sm hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 transition-all;
+  }
 }

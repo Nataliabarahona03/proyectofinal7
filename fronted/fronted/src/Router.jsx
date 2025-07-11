@@ -1,11 +1,10 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import UserState from "./contexts/user/UserState";
-// import ProductState from "./contexts/product/ProductState"; // Renombrado para futuro
-import GuitarState from "./contexts/guitar/GuitarState"; // Mantengo el original por ahora
+import GuitarState from "./contexts/guitar/GuitarState";
 import Layout from "./components/Layout";
 import Home from "./components/Home/index";
-import ProductList from "./components/Guitar/List"; // Renombrado para claridad
-import SingleProduct from "./components/Guitar/Single"; // Renombrado para claridad
+import GuitarList from "./components/Guitar/List";
+import SingleGuitar from "./components/Guitar/Single";
 import Register from "./components/Auth/Register";
 import Login from "./components/Auth/Login";
 import Profile from "./components/Profile/index";
@@ -16,7 +15,6 @@ const Router = () => {
   return (
     <>
       <UserState>
-        {/* Idealmente, renombra GuitarState a ProductState en tus contextos */}
         <GuitarState>
           <BrowserRouter>
             <Routes>
@@ -31,9 +29,8 @@ const Router = () => {
                   path="perfil"
                   element={<PrivateRoute component={Profile} />}
                 />
-                {/* RUTAS ACTUALIZADAS */}
-                <Route path="poleras" element={<ProductList />} />
-                <Route path="poleras/:id" element={<SingleProduct />} />
+                <Route path="guitarras" element={<GuitarList />} />
+                <Route path="guitarras/:id" element={<SingleGuitar />} />
               </Route>
             </Routes>
           </BrowserRouter>
